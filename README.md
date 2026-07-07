@@ -6,7 +6,7 @@ FastAPI, Redis Pub/Sub, Apache Kafka, 그리고 Oracle DB를 활용한 대규모
 
 ## 1. 설계 및 기술 스택 선정 배경
 
-실실시간 채팅 서비스의 안정적인 실시간성 보장과 무중단 수평 확장을 고려하여 설계되었습니다.
+실시간 채팅 서비스의 안정적인 실시간성 보장과 무중단 수평 확장을 고려하여 설계되었습니다.
 
 ### 🚀 FastAPI & WebSockets
 * **선정 배경**: Python 진영의 비동기(Asynchronous) 프레임워크 중 최고 수준의 속도를 제공하며, WebSockets 프로토콜을 네이티브로 완벽하게 지원합니다.
