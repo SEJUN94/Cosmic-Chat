@@ -24,3 +24,29 @@ services:
       interval: 5s
       timeout: 10s
       retries: 5
+
+  redis:
+    image: redis:latest
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  oracle:
+    image: gvenzl/oracle-free:latest
+    container_name: oracle-db
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PASSWORD: "admn!123"
+      APP_USER: admn
+      APP_PASSWORD: "admn!123"
+      ORACLE_DATABASE: orcl
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+
+volumes:
+  redis_data:
+  oracle_data:
