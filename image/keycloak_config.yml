@@ -1,0 +1,17 @@
+auth:
+  type: OAUTH2
+  oauth2:
+    client:
+      keycloak:
+        clientId: kafka-ui
+        clientSecret: YvryKGAjtubMAJOV9AlTVFqoBL6rsAVH
+        scope: openid
+        issuer-uri: http://auth.local:8081/realms/kafka
+        user-name-attribute: preferred_username
+        client-name: keycloak
+        provider: keycloak
+        redirect-uri: http://localhost:8080/login/oauth2/code/keycloak
+        authorization-grant-type: authorization_code
+        custom-params:
+          type: oauth
+          roles-field: roles

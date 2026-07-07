@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosmic Realtime Chat</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="shell">
+    <aside class="card sidebar">
+      <div class="brand">
+        <div class="planet"></div>
+        <div>
+          <h1>Cosmic Chat</h1>
+          <p class="subtitle">FastAPI · Redis Pub/Sub · WebSocket 기반 실시간 채팅</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="room">ROOM</label>
+        <input class="input" id="room" value="Cosmic talk" placeholder="예: room" />
+      </div>
+
+      <div class="field">
+        <label for="sender">SENDER</label>
+        <input class="input" id="sender" value="LeeHoney" placeholder="예: wataru" />
+      </div>
+
+      <button class="btn btn-primary" id="connectBtn" type="button">연결 시작</button>
+      <button class="btn btn-secondary" id="disconnectBtn" type="button" disabled>연결 종료</button>
+
+      <div class="status">
+        <span class="dot" id="statusDot"></span>
+        <span id="statusText">대기 중</span>
+      </div>
+
+      <div class="meta">
+        같은 Room으로 접속한 사용자끼리 메시지를 공유합니다.<br />
+        Redis에는 최근 메시지 이력이 저장되고, 접속 시 자동으로 불러옵니다.
+      </div>
+    </aside>
+
+    <main class="card main">
+      <div class="toolbar">
+        <div>
+          <h2 id="roomTitle">room1</h2>
+          <p id="roomDescription">연결 후 메시지를 주고받아 보세요.</p>
+        </div>
+      </div>
+
+      <section class="messages" id="messages">
+        <div class="empty" id="emptyState">아직 메시지가 없습니다. 우주 채팅을 시작해보세요.</div>
+      </section>
+
+      <div class="composer">
+        <!-- 사진 첨부 버튼 -->
+        <button class="btn btn-secondary attachment-btn" id="attachBtn" type="button" title="사진 첨부">
+          📎
+        </button>
+        
+        <!-- 숨겨진 파일 입력 -->
+        <input type="file" id="imageInput" accept="image/*" style="display: none;" />
+
+        <input class="input" id="message" type="text" placeholder="메시지를 입력하세요..." />
+        <button class="btn btn-primary" id="sendBtn" type="button" disabled>전송</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+
+</body>
+</html>

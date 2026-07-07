@@ -1,0 +1,52 @@
+rbac:
+  roles:
+    - name: admin-role
+      clusters:
+        - local
+      subjects:
+        - provider: oauth
+          type: role
+          value: "kafka-admins"
+      permissions:
+        - resource: applicationconfig
+          actions: [view]
+        - resource: clusterconfig
+          actions: [view]
+        - resource: topic
+          value: ".*"
+          regex: true
+          actions: [view, create, edit, delete, messages_read, messages_produce, messages_delete]
+
+    - name: readonly-role
+      clusters:
+        - local
+      subjects:
+        - provider: oauth
+          type: role
+          value: "kafka-readonly"
+      permissions:
+        - resource: applicationconfig
+          actions: [view]
+        - resource: clusterconfig
+          actions: [view]
+        - resource: topic
+          value: ".*"
+          regex: true
+          actions: [view, messages_read]
+
+    - name: test-role
+      clusters:
+        - local
+      subjects:
+        - provider: oauth
+          type: role
+          value: "kafka-testRole"
+      permissions:
+        - resource: applicationconfig
+          actions: [view]
+        - resource: clusterconfig
+          actions: [view]
+        - resource: topic
+          value: ".*"
+          regex: true
+          actions: [view, create, edit, delete, messages_read, messages_produce]
